@@ -18,6 +18,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 import { viteMockServe } from 'vite-plugin-mock'
 
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -47,11 +48,13 @@ export default defineConfig({
         // 'vue-router'
         VueRouterAutoImports,
         '@vueuse/core'
-      ]
+      ],
+      resolvers: [ElementPlusResolver()]
     }),
     Components({
       directoryAsNamespace: true,
-      collapseSamePrefixes: true
+      collapseSamePrefixes: true,
+      resolvers: [ElementPlusResolver()]
     }),
     Layouts({
       layoutsDirs: 'src/layouts',
