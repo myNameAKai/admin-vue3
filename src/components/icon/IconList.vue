@@ -4,8 +4,8 @@
             :class="['border-r border-b flex flex-col justify-center items-center cursor-pointer', itemClass]"
             @click="handleClick(collection + ':' + item, index)">
             <component :is="Icon" :icon="collection + ':' + item" :class="[iconClass, {
-                [activeClass]: moduleValue ? moduleValue === (collection + ':' + item) : activeIndex === index
-            }]"></component>
+            [activeClass]: moduleValue ? moduleValue === (collection + ':' + item) : activeIndex === index
+        }]"></component>
             <div v-show="showText" class="mt-4">{{ transformString(item) }}</div>
         </li>
     </ul>
@@ -16,7 +16,6 @@
 import data from "./icon-ep.json"
 import { loadIcons, Icon } from "@iconify/vue"
 import type { IconListProps } from "./types";
-import { defineModel } from "vue"
 const props = withDefaults(defineProps<IconListProps>(), {
     iconData: () => data,
     collection: 'ep',
