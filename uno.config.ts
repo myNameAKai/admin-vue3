@@ -12,5 +12,6 @@ export default defineConfig({
         display: 'inline-block'
       }
     })
-  ]
+  ],
+  safelist: ['ep:fullscreen-exit', 'ep:fullscreen']
 })

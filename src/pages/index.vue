@@ -5,6 +5,7 @@
     <el-button type="primary" @click="handleClick">模式</el-button> -->
     <DarkModeToggle :dark="false"></DarkModeToggle>
     <div class="bg-red-500 dark:bg-sky-400 w-20 y-20"></div>
+    <FullScreen style="font-size: 2rem;"></FullScreen>
   </el-row>
 </template>
 
