@@ -19,6 +19,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { viteMockServe } from 'vite-plugin-mock'
 
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -52,7 +55,8 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()]
     }),
     Components({
-      directoryAsNamespace: true,
+      // 允许子目录作为组件的命名空间前缀
+      directoryAsNamespace: false,
       collapseSamePrefixes: true,
       resolvers: [ElementPlusResolver()]
     }),
@@ -83,6 +87,12 @@ export default defineConfig({
     viteMockServe({
       mockPath: 'mock',
       enable: false
+    }),
+    createSvgIconsPlugin({
+      // Specify the icon folder to be cached
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+      // Specify symbolId format
+      symbolId: 'icon-[dir]-[name]'
     })
   ],
   resolve: {

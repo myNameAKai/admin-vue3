@@ -10,6 +10,7 @@ import './assets/main.css'
 import '@unocss/reset/tailwind.css'
 import 'virtual:uno.css'
 
+import 'virtual:svg-icons-register'
 const app = createApp(App)
 
 app.use(createPinia())

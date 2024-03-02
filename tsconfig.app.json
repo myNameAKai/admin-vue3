@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     },
     "moduleResolution": "node",
-    "types": ["element-plus/global"]
+    "types": ["element-plus/global","vite-plugin-svg-icons/client"]
   }
 }

@@ -8,9 +8,23 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElColorPicker: typeof import('element-plus/es')['ElColorPicker']
+    ElDialog: typeof import('element-plus/es')['ElDialog']
+    ElInputNumber: typeof import('element-plus/es')['ElInputNumber']
     ElRow: typeof import('element-plus/es')['ElRow']
-    ReloadPrompt: typeof import('./src/components/ReloadPrompt.vue')['default']
+    ElSlider: typeof import('element-plus/es')['ElSlider']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    IconFontIcon: typeof import('./src/components/icon/IconFontIcon.vue')['default']
+    Iconify: typeof import('./src/components/icon/Iconify.vue')['default']
+    IconList: typeof import('./src/components/icon/IconList.vue')['default']
+    IconNeticon: typeof import('./src/components/icon/Neticon.vue')['default']
+    IconPicker: typeof import('./src/components/icon/IconPicker.vue')['default']
+    IconSvgIcon: typeof import('./src/components/icon/SvgIcon.vue')['default']
+    Neticon: typeof import('./src/components/icon/Neticon.vue')['default']
+    ReloadPrompt: typeof import('./src/components/others/ReloadPrompt.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SvgIcon: typeof import('./src/components/icon/SvgIcon.vue')['default']
   }
 }
