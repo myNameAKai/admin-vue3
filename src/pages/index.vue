@@ -1,26 +1,17 @@
 <template>
   <div>home</div>
   <el-row class="mb-4">
-    <!-- 现在的模式是:{{ isDark ? '暗黑模式' : '白天模式' }}
-    <el-button type="primary" @click="handleClick">模式</el-button> -->
-    <DarkModeToggle :dark="false"></DarkModeToggle>
-    <div class="bg-red-500 dark:bg-sky-400 w-20 y-20"></div>
-    <FullScreen style="font-size: 2rem;"></FullScreen>
-    <p>{{ $t('hello') }}</p>
-    <p>{{ $t('el.colorpicker.confirm') }}</p>
-    <select v-model="locale">
-      <option value="zh-CN">zh-CN</option>
-      <option value="en">en-US</option>
-    </select>
-    {{ $t('any.thing') }}
+    <Menu mode="vertical" :data="data" class="w-[600px]">
+
+    </Menu>
   </el-row>
 </template>
 
 <script setup lang="ts">
+import type { AppRouteMenuItem } from '@/components/Menu/type';
 import { loadLocaleMessages } from '@/modules/i18n';
 import { registerSW } from 'virtual:pwa-register'
-import { useI18n } from "vue-i18n"
-
+// import { useI18n } from "vue-i18n"
 // const { t: $t, locale: Locale } = useI18n()
 // 从本地加载
 // addAPIProvider('lcoal', {
@@ -34,10 +25,62 @@ watch(locale, () => {
 })
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-function handleClick() {
-  toggleDark()
 
-}
+const data: AppRouteMenuItem[] = [
+  {
+    name: 'Home',
+    path: '/home',
+    meta: {
+      title: '首页',
+      layout: 'default',
+      order: 1,
+      icon: 'ep:apple',
+      hideMenu: false,
+      disabled: false
+    },
+    children: [
+      {
+        name: 'About',
+        path: '/home/about',
+        meta: {
+          title: '关于我们',
+          layout: 'default',
+          order: 2,
+          // icon: 'info',
+          hideMenu: false,
+          disabled: false
+        },
+        children: [
+          {
+            name: 'Contact',
+            path: '/home/about/contact',
+            meta: {
+              title: '联系我们',
+              layout: 'default',
+              order: 3,
+              // icon: 'phone',
+              hideMenu: false,
+              disabled: false
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    name: 'Dashboard',
+    path: '/dashboard',
+    meta: {
+      title: '大屏',
+      layout: 'default',
+      order: 4,
+      icon: 'ep:bell',
+      hideMenu: false,
+      disabled: false
+    }
+  }
+]
+
 onMounted(() => {
   // setInterval(() => {
   //   iconRef.value = "@lcoal:bi:" + arr[Math.floor(Math.random() * arr.length)]
