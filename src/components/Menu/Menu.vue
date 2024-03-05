@@ -1,5 +1,6 @@
 <template>
-    <el-menu v-bind="menuProps" @select="handleSelect" @open="handleOpen" @close="handleClose">
+    <el-menu v-bind="menuProps" @select="handleSelect" :style="{ '--bg-color': backgroundColor }" @open="handleOpen"
+        @close="handleClose">
         <slot name="icon"></slot>
         <!-- 左右Logo +菜单的情况 -->
         <!-- <div class="flex-grow" v-if="isDefined(slots['icon'])" /> -->
@@ -12,17 +13,32 @@
 import type { MenuProps as ElMenuProps, MenuItemClicked, SubMenuProps } from 'element-plus'
 import { useMenu } from './useMenu'
 import type { NavigationFailure } from 'vue-router'
-import type { AppRouteMenuItem } from './type';
+import type { AppRouteMenuItem, IconOptions } from './type';
+
+
 
 interface MenuProps extends Partial<ElMenuProps> {
     data: AppRouteMenuItem[]
     subMenuProps?: Partial<SubMenuProps>
+    // collapse?: boolean
+    iconOptions?: IconOptions
 }
 
+
 const props = withDefaults(defineProps<MenuProps>(), {
-    data: () => []
+    data: () => [],
+    // collapse: false,
+    iconOptions: () => ({
+        style: {
+            fontSize: 18
+        },
+        class: "mr-2"
+    }),
+    backgroundColor: "transparent",
 })
 
+// 依赖注入iconProps
+provide('iconProps', props.iconOptions)
 type EmitSelectType = [
     index: string,
     indexPath: string[],

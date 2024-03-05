@@ -8,6 +8,12 @@
 
 <script lang="ts" setup>
 import { RouterLink } from 'vue-router/auto'
+definePage({
+  meta: {
+    title: "关于我们",
+    icon: "ep:apple",
+  }
+})
 </script>
 
 <style>
@@ -22,5 +28,5 @@ import { RouterLink } from 'vue-router/auto'
 
 <route lang="yaml">
 meta:
-  layout: home
+  layout: default
 </route>

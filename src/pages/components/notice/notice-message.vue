@@ -12,6 +12,12 @@
 <script setup lang="ts">
 import Notice from '@/components/Notice/Notice.vue';
 import type { NoticeActionsItem, NoticeMessageListOptions } from '@/components/Notice/types';
+definePage({
+    meta: {
+        title: "消息通知",
+        icon: "ep:apple",
+    }
+})
 const scale = ref(0.5)
 
 const actions = ref<NoticeActionsItem[]>([

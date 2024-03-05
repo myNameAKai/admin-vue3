@@ -1,4 +1,6 @@
 import type { IconifyIcon } from '@iconify/vue'
+import type { CSSProperties } from 'vue'
+
 export type Component<T = any> =
   | ReturnType<typeof defineComponent>
   | Promise<typeof import('*.vue')>
@@ -13,10 +15,15 @@ export interface RouteMeta extends Record<string | number | symbol, unknown> {
   disabled?: boolean
 }
 export interface AppRouteMenuItem {
-  name?: string
+  name?: string | symbol
   meta?: RouteMeta
   children?: AppRouteMenuItem[]
   alias?: string
   path: string
   component?: Component
+}
+
+export interface IconOptions {
+  style: CSSProperties
+  class: string
 }

@@ -12,7 +12,12 @@
 
 import { ElMessage } from "element-plus";
 import { loadIcon } from "@iconify/vue"
-
+definePage({
+    meta: {
+        title: "图标列表",
+        icon: "ep:apple",
+    }
+})
 //  true 复制icon名称  false 复制SVG图标
 const copyTypeFlag = ref(false)
 const copyIconComponent = ref(false)

@@ -1,9 +1,10 @@
 <template>
   <div>home</div>
   <el-row class="mb-4">
-    <Menu mode="vertical" :data="data" class="w-[600px]">
+    <Iconify icon="mdi:home"></Iconify>
+    <!-- <Menu mode="vertical" :data="data" class="w-[600px]">
 
-    </Menu>
+    </Menu> -->
   </el-row>
 </template>
 
@@ -11,6 +12,7 @@
 import type { AppRouteMenuItem } from '@/components/Menu/type';
 import { loadLocaleMessages } from '@/modules/i18n';
 import { registerSW } from 'virtual:pwa-register'
+import Iconify from "@/components/icon/Iconify.vue"
 // import { useI18n } from "vue-i18n"
 // const { t: $t, locale: Locale } = useI18n()
 // 从本地加载
@@ -19,6 +21,12 @@ import { registerSW } from 'virtual:pwa-register'
 //   // Mutliple hosts allow redundancy: if one host is down, component will query another host.
 //   resources: ['http://localhost:5173'],
 // });
+definePage({
+  meta: {
+    title: "主页",
+    icon: "mdi:home",
+  }
+})
 const locale = ref('en')
 watch(locale, () => {
   loadLocaleMessages(locale.value)
